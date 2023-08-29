@@ -1,0 +1,153 @@
+String fn = "Addrija";
+        String ln="Kumar";
+        String headline = "willing to make a change";
+        String currPos = "SDE";
+        String ind = "Comp Science";
+        String loc = "Delhi";
+        String about = "always curious";
+        user1.setPersDetails(fn,ln,headline,currPos,ind,loc,about);
+
+        String email = "addrija2312@gmail.com";
+        String profleURL = "www.something.com";
+        String ph = "1234567890";
+        String add = "xyz,delhi";
+        String bday ="23/12/1998";
+        user1.setContactInfo(email,profleURL,ph,add,bday);
+
+        String aadharno="1234123412341234";
+        String workmail = "addrija@chargbee.com";
+        user1.setVerification(aadharno,workmail);
+
+        Experience exp1 = new Experience();
+        String title = "SDE intern";
+        EmploymentType employmentType = EmploymentType.INTERNSHIP;
+        String companyName = "CRIS";
+        String location="Delhi";
+        LocationType locationType = LocationType.REMOTE;
+        Boolean currentlyWorking = false;
+        String startDate = "01/06/2020";
+        String endDate = "31/07/2022";
+        String industry = "Comp Science";
+        ArrayList<String> skills = new ArrayList<>();
+        skills.add("Web dev");
+        skills.add("django");
+        exp1.setAllFields(title, employmentType, companyName, location, locationType,
+                currentlyWorking, startDate, endDate, industry, skills);
+        user1.addExperience(exp1);
+
+        Education ed1 = new Education();
+        String school = "NSIT-Delhi";
+        String degree = "B.E.";
+        ed1.setSchool(school);
+        ed1.setDegree(degree);
+        Education ed2 = new Education();
+        school = "IISc";
+        degree = "MTech";
+        ed2.setSchool(school);
+        ed2.setDegree(degree);
+        user1.addEducation(ed1);
+        user1.addEducation(ed2);
+
+
+
+try (Scanner sc = new Scanner(System.in)) {
+            System.out.println("Please enter personal details:");
+            System.out.println("First name:");
+            String fn = sc.nextLine();
+            System.out.println("Last name:");
+            String ln = sc.nextLine();
+            System.out.println("Headline:");
+            String headline = sc.nextLine();
+            System.out.println("Current position:");
+            String currPos = sc.nextLine();
+            System.out.println("Industry:");
+            String ind = sc.nextLine();
+            System.out.println("Location:");
+            String loc = sc.nextLine();
+            System.out.println("About description:");
+            String about = sc.nextLine();
+            user1.setPersDetails(fn, ln, headline, currPos, ind, loc, about);
+
+            System.out.println("\nPlease enter Contact details:");
+            System.out.println("Email id:");
+            String email = sc.nextLine();
+            System.out.println("Profile URL:");
+            String profileURL = sc.nextLine();
+            System.out.println("Phone number:");
+            String ph = sc.nextLine();
+            System.out.println("Address:");
+            String add = sc.nextLine();
+            System.out.println("Birthday (dd/mm/yyyy):");
+            String bday = sc.nextLine();
+            user1.setContactInfo(email, profileURL, ph, add, bday);
+
+            System.out.println("Please enter verification details:");
+            System.out.println("12-digit Aadhar no.:");
+            String aadharno = sc.nextLine();
+            System.out.println("Work email id:");
+            String workmail = sc.nextLine();
+            user1.setVerification(aadharno, workmail);
+
+            System.out.println("Enter experiences:");
+            String choice = "y";
+            while (choice.equalsIgnoreCase("y")) {
+                Experience exp1 = new Experience();
+                System.out.println("Job title:");
+                String title = sc.nextLine();
+                System.out.println("Enter type of employment:");
+                System.out.println("1.Full-time\t2.Internship");
+                int empInt = sc.nextInt();
+                EmploymentType employmentType = null;
+                if (empInt == 1) {
+                    employmentType = EmploymentType.FULLTIME;
+                } else if (empInt == 2) {
+                    employmentType = EmploymentType.INTERNSHIP;
+                }
+                System.out.println("Enter company name:");
+                String companyName = sc.nextLine();
+                System.out.println("Company location:");
+                String location = sc.nextLine();
+                System.out.println("Enter location type:");
+                System.out.println("1.Remote\t2.On-site\t3.Hybrid");
+                int locInt = sc.nextInt();
+                LocationType locationType = null;
+                if (locInt == 1) {
+                    locationType = LocationType.REMOTE;
+                } else if (locInt == 2) {
+                    locationType = LocationType.ONSITE;
+                } else if (locInt == 3) {
+                    locationType = LocationType.HYBRID;
+                }
+
+                System.out.println("Currently working here?:");
+                System.out.println("1.Yes \t2.No");
+                int cwInt = sc.nextInt();
+                boolean currentlyWorking = false;
+                if(cwInt==1) {
+                    currentlyWorking = true;
+                } else if (cwInt==2) {
+                    currentlyWorking = false;
+                }
+                sc.nextLine();
+                System.out.println("Start date (dd/mm/yyyy):");
+                String startDate = sc.nextLine();
+                System.out.println("End date (dd/mm/yyyy):");
+                String endDate = sc.nextLine();
+                System.out.println("Industry:");
+                String industry = sc.nextLine();
+                System.out.println("Enter skills associated with this experience:");
+                String skillChoice = "y";
+                ArrayList<String> skills = new ArrayList<>();
+                while (skillChoice.equalsIgnoreCase("y")){
+                    String currSkill=sc.nextLine();
+                    skills.add(currSkill);
+                    System.out.println("Add more skills (y/n)?");
+                    skillChoice=sc.nextLine();
+                }
+                exp1.setAllFields(title, employmentType, companyName, location, locationType,
+                        currentlyWorking, startDate, endDate, industry, skills);
+                user1.addExperience(exp1);
+                System.out.println("Experience added. \nAdd more experiences (y/n)?");
+                choice = sc.nextLine();
+            }
+        }
